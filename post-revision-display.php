@@ -397,6 +397,22 @@ function prd_rename_diff_content_class($diffs)
 						/x', '\\1diff-\\2', $diffs); // x = extended/verbose mode
 }
 
+function prd_get_custom_field_value ($post_id, $meta_key) 
+{
+	$custom_field_values = get_post_meta($post_id, $meta_key, true);
+	if (!is_array($custom_field_values)) {
+	        $value = $custom_field_values;
+	} else {
+		$last_value = end($custom_field_values);
+		foreach ($custom_field_values as $cfv) {
+			$value .= $cfv;
+			if ($cfv != $last_value)
+				$value .= ', ';
+		}
+	}
+	return $value;
+}
+
 function prd_get_revision_diffs($post, $revision)
 {
 	$previous = prd_break_up_lines($revision->post_content);
@@ -410,7 +426,32 @@ function prd_get_revision_diffs($post, $revision)
 	$diffs = prd_add_diff_header_part(__('Content', 'post-revision-display'), $diffs);
 	$diffs_title = prd_add_diff_header_part(__( 'Title', 'post-revision-display'), $diffs_title);
 
-	$diffs = $diffs_title . $diffs;
+	//diff the custom fields
+	$custom_field_keys = get_post_custom_keys($post->ID);
+	foreach ($custom_field_keys as $key) {
+		if ('_' != $key{0}) {
+			$previous_value = prd_get_custom_field_value ($revision->ID, $key);
+			$current_value = prd_get_custom_field_value ($post->ID, $key);
+			
+			if (wp_text_diff ($previous_value, $current_value)) {
+				$diffs_metadata[$key] = wp_text_diff ($previous_value, $current_value);
+				if (function_exists('translate_custom_field_key'))
+					$translated_key = translate_custom_field_key($key);
+				else
+					$translated_key = $key;
+				$diffs_metadata[$key] = prd_add_diff_header_part($translated_key, $diffs_metadata[$key]);
+			}
+		}
+		
+	}
+	//join all diff tables related to custom fields
+	if ($diffs_metadata) {
+		foreach ($diffs_metadata as $dm) {
+			$diffs_metadata_text .= $dm;
+		}
+	}
+
+	$diffs = $diffs_title . $diffs . $diffs_metadata_text;
 	if (empty($diffs)) {
 		$diffs = '<p>' . sprintf( __('There are no differences between the %s revision and the current revision. (Maybe only post meta information was changed.)', 'post-revision-display'),  wp_post_revision_title($revision, false)) . '</p>';
 	} else {
