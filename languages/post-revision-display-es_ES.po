@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Post Revision Display plugin v0.9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-28 19:08+0100\n"
+"PO-Revision-Date: 2010-12-08 22:31+0100\n"
+"Last-Translator: Fran Ontanaya <contacto@franontanaya.com>\n"
+"Language-Team: Spanish, Fran Ontanaya <contacto@franontanaya.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+
+#: post-revision-display.php:32
+#: post-revision-display.php:44
+msgid "Post Revisions:"
+msgstr "Revisiones del artículo:"
+
+#: post-revision-display.php:33
+#: post-revision-display.php:45
+msgid "Changes:"
+msgstr "Cambios:"
+
+#: post-revision-display.php:53
+#: post-revision-display.php:71
+msgid "Post Revision Display"
+msgstr "Listado de revisiones"
+
+#: post-revision-display.php:67
+msgid "Options updated."
+msgstr "Opciones actualizadas."
+
+#: post-revision-display.php:79
+msgid "Show revisions on single posts"
+msgstr "Mostrar revisiones en artículos individuales"
+
+#: post-revision-display.php:86
+msgid "Show revisions on pages"
+msgstr "Mostrar revisiones en páginas"
+
+#: post-revision-display.php:93
+msgid "Hide the message that appears if there are no post-publication revisions."
+msgstr "Ocultar el mensaje que aparece si no hay revisiones post-publicación."
+
+#: post-revision-display.php:96
+msgid "Revision list header:"
+msgstr "Cabecera de la lista de revisiones:"
+
+#: post-revision-display.php:99
+msgid "Revision diffs header:"
+msgstr "Cabecera de las diferencias entre revisiones: "
+
+#: post-revision-display.php:106
+msgid "Manual mode."
+msgstr "Modo manual."
+
+#: post-revision-display.php:109
+msgid "Update Options"
+msgstr "Actualizar opciones"
+
+#: post-revision-display.php:111
+msgid "Only applies to 'automatic' mode. If using 'manual' mode, this will be determined by where you place the function calls in your template files, most likely in single.php and/or page.php."
+msgstr "Sólo se aplica al modo 'automático'. Si se usa el modo 'manual', esto se determinará según dónde sitúes los llamamientos a la función en tu plantilla, normalmente en single.php y/o page.php."
+
+#: post-revision-display.php:112
+msgid "Turns off automatic placement of revision information and requires calls to 'the_revision*' functions from your template files. You'll have to read the documentation on this one."
+msgstr "Desactiva la inserción automática de información sobre revisiones y requiere llamadas a las funciones 'the_revision*' desde tus plantillas. Consulta la documentación sobre cómo hacerlo."
+
+#: post-revision-display.php:241
+msgid "No autosave"
+msgstr "No autoguardado"
+
+#: post-revision-display.php:249
+msgid "There are no revisions for this post."
+msgstr "No hay revisiones para este artículo."
+
+#: post-revision-display.php:254
+#, php-format
+msgid "%1$s by %2$s|post revision 1:datetime, 2:name"
+msgstr "%1$s por %2$s|revisión de artículo 1:fecha, 2:autor"
+
+#: post-revision-display.php:312
+msgid "This post has not been revised since publication."
+msgstr "Este artículo no ha sido revisado desde su publicación."
+
+#: post-revision-display.php:328
+msgid "current revision"
+msgstr "revisión actual"
+
+#: post-revision-display.php:329
+#, php-format
+msgid "(Viewing %s instead.)"
+msgstr "(Viendo %s en cambio.)"
+
+#: post-revision-display.php:331
+#, php-format
+msgid "Revision %1$s not found. %2$s"
+msgstr "La revisión %1$s no se ha encontrado. %2$s"
+
+#: post-revision-display.php:335
+msgid "This is the current revision."
+msgstr "Esta es la revisión actual."
+
+#: post-revision-display.php:337
+#, php-format
+msgid "Revision %1$s is not a revision of this post. %2$s"
+msgstr "La revisión %1$s no es una revisión de este artículo. %2$s"
+
+#: post-revision-display.php:339
+#, php-format
+msgid "Revision %1$s is a pre-publication revision. %2$s"
+msgstr "La revisión %1$s es una revisión previa a la publicación. %2$s"
+
+#: post-revision-display.php:342
+#, php-format
+msgid "You are viewing an old revision of this post, from %s."
+msgstr "Estás viendo una revisión anterior de este artículo, de %s."
+
+#: post-revision-display.php:342
+#, php-format
+msgid "%1$sSee below for differences%2$s between this version and the %3$s"
+msgstr "%1$sA continuación se muestran las diferencias%2$s entre esta versión y la %3$s"
+
+#: post-revision-display.php:386
+msgid "Content"
+msgstr "Contenido"
+
+#: post-revision-display.php:387
+msgid "Title"
+msgstr "Título"
+
+#: post-revision-display.php:391
+#, php-format
+msgid "There are no differences between the %s revision and the current revision. (Maybe only post meta information was changed.)"
+msgstr "No hay diferencias entre la revisión %s y la revisión actual. (Posiblemente sólo hayan cambiado los metadatos de la entrada.)"
+
+#: post-revision-display.php:417
+msgid "Current Revision"
+msgstr "Revisión actual"
+
+#: post-revision-display.php:418
+#, php-format
+msgid "%1$sNote:%2$s Spaces may be added to comparison text to allow better line wrapping."
+msgstr "%1$sNota:%2$s Quizá se añadan espacios a la comparación para mejorar los saltos de línea."
+
