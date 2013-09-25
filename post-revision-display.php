@@ -285,7 +285,8 @@ function prd_get_revision_list($post, $args=null)
 			} else {
 				$sep = '&';
 			}
-			$date = '<a href="' . $plink . $sep . 'rev=' . $revision->ID . '">' . "$date</a>";
+			global $site_lang;
+			$date = '<a href="' . $plink . $sep . 'rev=' . $revision->ID . '&l=' . $site_lang . '">' . "$date</a>";
 		}
 		$name = get_author_name($revision->post_author);
 
@@ -435,10 +436,13 @@ function prd_get_revision_diffs($post, $revision)
 			
 			if (wp_text_diff ($previous_value, $current_value)) {
 				$diffs_metadata[$key] = wp_text_diff ($previous_value, $current_value);
-				if (function_exists('translate_custom_field_key'))
+				if (function_exists('translate_custom_field_key')) {
 					$translated_key = translate_custom_field_key($key);
-				else
+				}
+				else {
 					$translated_key = $key;
+
+				}
 				$diffs_metadata[$key] = prd_add_diff_header_part($translated_key, $diffs_metadata[$key]);
 			}
 		}
