@@ -340,8 +340,10 @@ function prd_get_revision_note($post, &$revision, &$rev_id, &$is_rev)
 				$note = __('This is the current revision.' , 'post-revision-display');
 			} else if ($revision->post_parent != $post->ID) { // this check should come before the date check
 				$note = sprintf(__('Revision %1$s is not a revision of this post. %2$s', 'post-revision-display'), $rev_id, $view_current);
-			} else if (strtotime($revision->post_date_gmt) < strtotime($post->post_date_gmt)) {
-				$note = sprintf(__('Revision %1$s is a pre-publication revision. %2$s', 'post-revision-display'), $rev_id, $view_current);
+			//The commented code below is not shpwing the differences between the first version of the post and the latest one. 
+			//}
+			//else if (strtotime($revision->post_date_gmt) < strtotime($post->post_date_gmt)) {
+			//	$note = sprintf(__('Revision %1$s is a pre-publication revision. %2$s', 'post-revision-display'), $rev_id, $view_current);
 			} else {
 				$is_rev = true;
 				$note = sprintf(__( 'You are viewing an old revision of this post, from %s.', 'post-revision-display'), wp_post_revision_title($revision, false) ) . ' ' . sprintf(__( '%1$sSee below for differences%2$s between this version and the %3$s', 'post-revision-display'), '<a href="#revision-diffs">', '</a>', $current_rev_link) . '.';
