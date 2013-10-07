@@ -27,7 +27,7 @@ License: GPL2
 */
 
 // Enable translation strings
-load_plugin_textdomain('post-revision-display', '/wp-content/plugins/post-revision-display/languages/', 'post-revision-display/languages/');
+load_plugin_textdomain('post-revision-display', false, 'post-revision-display/languages/');
 
 define('REV_LIST_HEADER', '<h4>' . __('Post Revisions:', 'post-revision-display') . '</h4>');
 define('REV_DIFFS_HEADER', '<h4>' . __('Changes:', 'post-revision-display') . '</h4>');
@@ -263,11 +263,14 @@ function prd_get_revision_list($post, $args=null)
 	if ($since_publish) {
 		$post_time = strtotime($post->post_date_gmt);
 	}
+	$first_revision = reset($revisions);
 	foreach ($revisions as $revision) {
 		if ('revision' === $type && wp_is_post_autosave($revision)) {
 			continue;
 		}
-		if ($since_publish && strtotime($revision->post_date_gmt) < $post_time) {
+		//The if clause below was hiding the first version of the post and displaying the latest one. The other if tries to fix this.
+		//if ($since_publish && strtotime($revision->post_date_gmt) < $post_time) {
+		if ($since_publish && $first_revision->ID == $revision->ID) {
 			continue;
 		}
 		// 2nd param to wp_post_revision_title determines if link (if true, only links if you have access)
@@ -293,9 +296,10 @@ function prd_get_revision_list($post, $args=null)
 		$title = sprintf( $titlef, $date, $name );
 		$rows .= "\t<li>$title</li>\n";
 	}
-
 	if (!empty($rows)) {
 		// add current revision to the top
+		//The commented code below is unnecessary because the current version is coming into $revisions and displayed throught the previous foreach above.
+		/*
 		$date = wp_post_revision_title($post, false);
 		if ($is_rev) {
 			$date = '<a href="' . get_permalink() . '">' . $date . '</a>';
@@ -303,7 +307,7 @@ function prd_get_revision_list($post, $args=null)
 		$name = get_author_name($post->post_author);
 		$title = sprintf($titlef, $date, $name);
 		$rows = "\t<li>$title</li>\n$rows";
-
+		*/
 		$rev_list = '<ul class="post-revisions">' .
 					"\n$rows\n</ul>";
 	} else if (empty($rev_list)) {
