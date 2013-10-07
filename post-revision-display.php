@@ -289,7 +289,7 @@ function prd_get_revision_list($post, $args=null)
 				$sep = '&';
 			}
 			global $site_lang;
-			$date = '<a href="' . $plink . $sep . 'rev=' . $revision->ID . '&l=' . $site_lang . '">' . "$date</a>";
+			$date = '<a href="' . $plink . $sep . 'rev=' . $revision->ID . '&l=' . $site_lang . '#revision-diffs">' . "$date</a>";
 		}
 		$name = get_author_name($revision->post_author);
 
