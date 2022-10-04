@@ -3,7 +3,7 @@ Contributors: scarpenter, dnorman
 Donate link: https://my.fsf.org/donate
 Tags: posts, revisions, corrections, transparency
 Requires at least: 2.6
-Tested up to: 3.0.3
+Tested up to: 5.3.2
 Stable tag: 0.9
 
 Displays post-publication revisions along with differences/changes from current revision on single post views.
