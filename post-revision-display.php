@@ -436,7 +436,7 @@ function prd_get_revision_diffs($post, $revision)
 	//diff the custom fields
 	$custom_field_keys = get_post_custom_keys($post->ID);
 	foreach ($custom_field_keys as $key) {
-		if ('_' != $key{0}) {
+		if ('_' != $key[0]) {
 			$previous_value = prd_get_custom_field_value ($revision->ID, $key);
 			$current_value = prd_get_custom_field_value ($post->ID, $key);
 			
